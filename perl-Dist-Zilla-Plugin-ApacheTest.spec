@@ -1,29 +1,29 @@
 %define upstream_name    Dist-Zilla-Plugin-ApacheTest
 %define upstream_version 0.01
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	3
 
-Summary:    Build a Makefile.PL that uses ExtUtils::MakeMaker with Apache::Test
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/Dist/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Build a Makefile.PL that uses ExtUtils::MakeMaker with Apache::Test
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Dist/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(Data::Dumper)
-BuildRequires: perl(Dist::Zilla::File::InMemory)
-BuildRequires: perl(Dist::Zilla::Role::BuildRunner)
-BuildRequires: perl(Dist::Zilla::Role::InstallTool)
-BuildRequires: perl(Dist::Zilla::Role::PrereqSource)
-BuildRequires: perl(Dist::Zilla::Role::TestRunner)
-BuildRequires: perl(Dist::Zilla::Role::TextTemplate)
-BuildRequires: perl(List::MoreUtils)
-BuildRequires: perl(Moose)
-BuildRequires: perl(Moose::Autobox)
-BuildRequires: perl(namespace::autoclean)
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildRequires:	perl(Data::Dumper)
+BuildRequires:	perl(Dist::Zilla::File::InMemory)
+BuildRequires:	perl(Dist::Zilla::Role::BuildRunner)
+BuildRequires:	perl(Dist::Zilla::Role::InstallTool)
+BuildRequires:	perl(Dist::Zilla::Role::PrereqSource)
+BuildRequires:	perl(Dist::Zilla::Role::TestRunner)
+BuildRequires:	perl(Dist::Zilla::Role::TextTemplate)
+BuildRequires:	perl(List::MoreUtils)
+BuildRequires:	perl(Moose)
+BuildRequires:	perl(Moose::Autobox)
+BuildRequires:	perl(namespace::autoclean)
+BuildArch:	noarch
 
 %description
 This plugin will produce an the ExtUtils::MakeMaker manpage-powered
@@ -40,24 +40,17 @@ this module will not need to reimplement all of it.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 %make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc Changes META.yml LICENSE README
 %{_mandir}/man3/*
-%perl_vendorlib/*
-
+%{perl_vendorlib}/*
 
