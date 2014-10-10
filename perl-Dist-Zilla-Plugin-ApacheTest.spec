@@ -3,7 +3,7 @@
 
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
-Release:	3
+Release:	4
 
 Summary:	Build a Makefile.PL that uses ExtUtils::MakeMaker with Apache::Test
 License:	GPL+ or Artistic
