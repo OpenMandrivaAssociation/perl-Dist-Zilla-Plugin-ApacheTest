@@ -1,15 +1,15 @@
 %define upstream_name    Dist-Zilla-Plugin-ApacheTest
-%define upstream_version 0.01
+%define upstream_version 0.04
 
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	5
+Version:	%{upstream_version}
+Release:	1
 
 Summary:	Build a Makefile.PL that uses ExtUtils::MakeMaker with Apache::Test
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/Dist/%{upstream_name}-%{upstream_version}.tar.gz
+Url:		https://github.com/mschout/dist-zilla-plugin-apachetest
+Source0:	https://cpan.metacpan.org/authors/id/M/MS/MSCHOUT/Dist-Zilla-Plugin-ApacheTest-%{upstream_version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
